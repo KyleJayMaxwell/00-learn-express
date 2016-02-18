@@ -10,6 +10,17 @@ var vegetables = [
 //declared port
 var port = 3333;
 
+// WHEN the app loads for the first time, register "ejs" as the templating language
+// http://www.embeddedjs.com/
+app.set('view engine', 'ejs');
+
+// WHEN a user visits the homepage
+app.get('/', function(req, res){
+  // THEN read the file named index.ejs, and do some text replacing
+  // such that <%= name %> becomes "Elie"
+  res.render('index', {name: 'Elie'});
+});
+
 
 // when a user visits the home page
 app.get("/", function (req, res) {
@@ -43,11 +54,16 @@ app.get('/companies/:company/products/:productName', function(req, res){
 });
 
 //query parameters
+
+// WHEN someone visits /greeting?name=Sue
+// THEN set req.query to an object that looks like {name: "Sue"}
 app.get('/hi', function(req, res){
   var name = req.query.name;
   res.send('Hello, '+ name);
 });
 
+// WHEN someone visits /greeting?first=Joe&last=Jones
+// THEN set req.query to an object that looks like {first: "Joe", last: "Jones"}
 app.get('/greeting', function(req, res){
   res.send('Hello, '+ [req.query.first, req.query.last].join(" "));
 });
