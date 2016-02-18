@@ -7,11 +7,19 @@ var vegetables = [
   'Peas'
 ];
 
+//declared port
 var port = 3333;
+
+
 // when a user visits the home page
 app.get("/", function (req, res) {
   //Then send back the response: 'Hello World'
   res.send('Hello World');
+});
+
+//When a user goes to localhost/vegetables
+app.get("/vegetables", function(req, res){
+  res.send(vegetables.join(", "));
 });
 
 // When user goes to meaning-of-life they see "42"
