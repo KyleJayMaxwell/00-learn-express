@@ -41,3 +41,13 @@ app.get('/hello/:name', function(req, res){
 app.get('/companies/:company/products/:productName', function(req, res){
   res.send(req.params.company + ' makes the ' + req.params.productName );
 });
+
+//query parameters
+app.get('/hi', function(req, res){
+  var name = req.query.name;
+  res.send('Hello, '+ name);
+});
+
+app.get('/greeting', function(req, res){
+  res.send('Hello, '+ [req.query.first, req.query.last].join(" "));
+});
