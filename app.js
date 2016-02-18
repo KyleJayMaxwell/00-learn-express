@@ -31,3 +31,13 @@ app.get("/meaning-of-life", function(req, res){
 app.listen(port, function (){
   console.log("Starting a server on localhost:"+port)
 });
+
+// When someone goes to hello/name they will get their name back
+app.get('/hello/:name', function(req, res){
+  res.send('Hello, '+ req.params.name);
+});
+
+// Grabs the company name and the product name to show the client
+app.get('/companies/:company/products/:productName', function(req, res){
+  res.send(req.params.company + ' makes the ' + req.params.productName );
+});
